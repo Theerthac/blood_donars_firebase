@@ -42,6 +42,7 @@ class InternetConnectivityServices {
                 isDeviceConnected =
                     await InternetConnectionChecker().hasConnection;
                 if (!isDeviceConnected) {
+                  
                   showDialogBox(context);
                 
                     isAlertSet = true;
