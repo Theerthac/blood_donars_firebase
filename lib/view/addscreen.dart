@@ -67,11 +67,11 @@ class _AddScreenState extends State<AddScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: DropdownButtonFormField(
-              decoration: InputDecoration(label: Text('Select Blood Group')),
+              decoration: const InputDecoration(label: Text('Select Blood Group')),
               items: bloodgroups
                   .map((e) => DropdownMenuItem(
-                        child: Text(e),
                         value: e,
+                        child: Text(e),
                       ))
                   .toList(),
               onChanged: (val) {
@@ -87,15 +87,15 @@ class _AddScreenState extends State<AddScreen> {
             child: ElevatedButton(
               style: ButtonStyle(
                   minimumSize:
-                      MaterialStateProperty.all(Size(double.infinity, 50)),
+                      MaterialStateProperty.all(const Size(double.infinity, 50)),
                   backgroundColor: MaterialStateProperty.all(appcolor)),
               onPressed: () {
                 addDonor();
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => HomeScreen(),
+                  builder: (context) => const HomeScreen(),
                 ));
               },
-              child: Text(
+              child: const Text(
                 'Submit',
                 style: TextStyle(fontSize: 20),
               ),

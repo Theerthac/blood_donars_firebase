@@ -1,6 +1,5 @@
 import 'package:blood_donation/view/addscreen.dart';
 import 'package:blood_donation/helpers/colors.dart';
-import 'package:blood_donation/view/edit.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -34,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => AddScreen(),
+            builder: (context) => const AddScreen(),
           ));
         },
         backgroundColor: appcolor,
@@ -59,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               color: Color.fromARGB(255, 220, 219, 219),
                               blurRadius: 5,
@@ -76,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               radius: 30,
                               child: Text(
                                 donorsnap['group'],
-                                style: TextStyle(fontSize: 25),
+                                style: const TextStyle(fontSize: 25),
                               ),
                             ),
                           ),
@@ -86,12 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Text(
                               donorsnap['name'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               donorsnap['phone'].toString(),
-                              style: TextStyle(fontSize: 18),
+                              style: const TextStyle(fontSize: 18),
                             )
                           ],
                         ),
@@ -107,14 +106,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                       'id': donorsnap.id,
                                     });
                               },
-                              icon: Icon(Icons.edit),
+                              icon: const Icon(Icons.edit),
                               iconSize: 30,
                             ),
                             IconButton(
                               onPressed: () {
                                 deleteDonor(donorsnap.id);
                               },
-                              icon: Icon(Icons.delete),
+                              icon: const Icon(Icons.delete),
                               iconSize: 30,
                             ),
                           ],

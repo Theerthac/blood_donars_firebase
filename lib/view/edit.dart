@@ -73,11 +73,11 @@ class _EditDonorState extends State<EditDonor> {
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: DropdownButtonFormField(
               value: selectedgroups,
-              decoration: InputDecoration(label: Text('Select Blood Group')),
+              decoration: const InputDecoration(label: Text('Select Blood Group')),
               items: bloodgroups
                   .map((e) => DropdownMenuItem(
-                        child: Text(e),
                         value: e,
+                        child: Text(e),
                       ))
                   .toList(),
               onChanged: (val) {
@@ -93,12 +93,12 @@ class _EditDonorState extends State<EditDonor> {
             child: ElevatedButton(
               style: ButtonStyle(
                   minimumSize:
-                      MaterialStateProperty.all(Size(double.infinity, 50)),
+                      MaterialStateProperty.all(const Size(double.infinity, 50)),
                   backgroundColor: MaterialStateProperty.all(appcolor)),
               onPressed: () {
                 updateDonor(docId);
               },
-              child: Text(
+              child: const Text(
                 'Update',
                 style: TextStyle(fontSize: 20),
               ),
