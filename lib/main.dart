@@ -1,4 +1,5 @@
 
+import 'package:blood_donation/view/edit.dart';
 import 'package:blood_donation/view/home.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,9 +18,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      routes: {
+        '/update':(context) => const EditDonor(),
+      },
+      home: const HomeScreen(),
     );
   }
 }

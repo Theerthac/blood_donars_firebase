@@ -1,17 +1,16 @@
 import 'package:blood_donation/helpers/colors.dart';
-import 'package:blood_donation/view/home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 
-class AddScreen extends StatefulWidget {
-  const AddScreen({super.key});
+class EditDonor extends StatefulWidget {
+  const EditDonor({super.key});
 
   @override
-  State<AddScreen> createState() => _AddScreenState();
+  State<EditDonor> createState() => _EditDonorState();
 }
 
-class _AddScreenState extends State<AddScreen> {
+class _EditDonorState extends State<EditDonor> {
   final bloodgroups = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
   String? selectedgroups;
 
@@ -21,21 +20,15 @@ class _AddScreenState extends State<AddScreen> {
   TextEditingController donorName = TextEditingController();
   TextEditingController donorPhone = TextEditingController();
 
-  void addDonor() {
-    final data = {
-      'name': donorName.text,
-      'phone': donorPhone.text,
-      'group': selectedgroups,
-    };
-    donor.add(data);
-  }
+
 
   @override
   Widget build(BuildContext context) {
+    final args =  ModalRoute.of(context)!.settings.arguments as Map;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Add Donors',
+          'Update Donors',
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
         backgroundColor: appcolor,
@@ -90,13 +83,9 @@ class _AddScreenState extends State<AddScreen> {
                       MaterialStateProperty.all(Size(double.infinity, 50)),
                   backgroundColor: MaterialStateProperty.all(appcolor)),
               onPressed: () {
-                addDonor();
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => HomeScreen(),
-                ));
               },
               child: Text(
-                'Submit',
+                'Update',
                 style: TextStyle(fontSize: 20),
               ),
             ),
