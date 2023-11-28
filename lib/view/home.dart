@@ -15,6 +15,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final CollectionReference donor =
       FirebaseFirestore.instance.collection('donor');
+
+  void deleteDonor(docId) {
+    donor.doc(docId).delete();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,21 +100,20 @@ class _HomeScreenState extends State<HomeScreen> {
                             IconButton(
                               onPressed: () {
                                 Navigator.pushNamed(context, '/update',
-                                arguments: {
-                                  'name':donorsnap['name'],
-                                  'phone':donorsnap['phone'].toString(),
-                                  'group':donorsnap['group'],
-                                  'id':donorsnap.id,
-
-                                }
-                                );
-                                
+                                    arguments: {
+                                      'name': donorsnap['name'],
+                                      'phone': donorsnap['phone'].toString(),
+                                      'group': donorsnap['group'],
+                                      'id': donorsnap.id,
+                                    });
                               },
                               icon: Icon(Icons.edit),
                               iconSize: 30,
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                deleteDonor(donorsnap.id);
+                              },
                               icon: Icon(Icons.delete),
                               iconSize: 30,
                             ),
